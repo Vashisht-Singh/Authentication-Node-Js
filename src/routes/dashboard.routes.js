@@ -19,7 +19,7 @@ dashboardRouter.get(
     }
 );
 
-// Admin only
+// Admin dashboard
 dashboardRouter.get(
     "/admin",
     authenticate,
@@ -31,19 +31,19 @@ dashboardRouter.get(
     }
 );
 
-// Faculty only
+// Staff dashboard (teaching and administrative staff)
 dashboardRouter.get(
-    "/faculty",
+    "/staff",
     authenticate,
-    authorize("faculty"),
+    authorize("staff"),
     (req, res) => {
         res.json({
-            message: "Welcome to the faculty dashboard"
+            message: "Welcome to the staff dashboard"
         });
     }
 );
 
-// Student only
+// Student dashboard
 dashboardRouter.get(
     "/student",
     authenticate,
@@ -51,6 +51,30 @@ dashboardRouter.get(
     (req, res) => {
         res.json({
             message: "Welcome to the student dashboard"
+        });
+    }
+);
+
+// Examination Officer dashboard
+dashboardRouter.get(
+    "/exam-officer",
+    authenticate,
+    authorize("exam_officer"),
+    (req, res) => {
+        res.json({
+            message: "Welcome to the Examination Officer dashboard"
+        });
+    }
+);
+
+// Controller of Examinations dashboard
+dashboardRouter.get(
+    "/coe",
+    authenticate,
+    authorize("coe"),
+    (req, res) => {
+        res.json({
+            message: "Welcome to the COE dashboard"
         });
     }
 );
