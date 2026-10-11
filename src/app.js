@@ -1,4 +1,4 @@
-
+import dashboardRouter from "./routes/dashboard.routes.js";
 
 import express from 'express';
 import morgan from 'morgan';
@@ -10,5 +10,5 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 app.use('/api/auth', authRouter);
-
+app.use("/api/dashboard", dashboardRouter);
 export default app;
